@@ -1,26 +1,43 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+    Console.WriteLine("=== SIMULADOR DE VENTAS CON DESCUENTOS ===");
 
-namespace ConsoleApp5
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("=== SIMULADOR DE VENTAS CON DESCUENTOS ===");
+            int n = 0;
+            bool valido = false;
 
-            Console.Write("¿Cuántos productos desea ingresar?: ");
-            int n = int.Parse(Console.ReadLine());
+            while (!valido)
+            {
+                Console.Write("¿Cuántos productos desea ingresar?: ");
+
+                if (int.TryParse(Console.ReadLine(), out n) && n > 0)
+                {
+                    valido = true;
+                }
+                else
+                {
+                    Console.WriteLine("Dato inválido. Debe ingresar un número entero positivo.\n");
+                }
+            }
 
             double[] precios = new double[n];
 
             for (int i = 0; i < n; i++)
             {
-                Console.Write($"Ingrese el precio del producto {i + 1}: S/ ");
-                precios[i] = double.Parse(Console.ReadLine());
+                valido = false;
+
+                while (!valido)
+                {
+                    Console.Write($"Ingrese el precio del producto {i + 1}: S/ ");
+                    string entrada = Console.ReadLine();
+
+                    if (double.TryParse(entrada, out double precio) && precio >= 0)
+                    {
+                        precios[i] = precio;
+                        valido = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Dato inválido. Ingrese un número válido y positivo.\n");
+                    }
+                }
             }
 
 
@@ -65,13 +82,9 @@ namespace ConsoleApp5
         {
             double montoFinal = total - descuento;
 
-            Console.WriteLine("\n************ RECIBO FINAL ************");
+            Console.WriteLine("\n***** RECIBO FINAL *****");
             Console.WriteLine($"Total de compra: S/ {total:F2}");
             Console.WriteLine($"Descuento aplicado: S/ {descuento:F2}");
             Console.WriteLine($"Monto a pagar: S/ {montoFinal:F2}");
             Console.WriteLine("");
             Console.WriteLine("");
-        }
-
-    }
-}
