@@ -94,9 +94,15 @@ namespace ConsoleApp5
         {
             double montoFinal = total - descuento;
 
-            Console.WriteLine("\n***** RECIBO FINAL *****");
+            Console.WriteLine("\n*** RECIBO FINAL ***");
             Console.WriteLine($"Total de compra: S/ {total:F2}");
             Console.WriteLine($"Descuento aplicado: S/ {descuento:F2}");
             Console.WriteLine($"Monto a pagar: S/ {montoFinal:F2}");
             Console.WriteLine("");
             Console.WriteLine("");
+        }
+    }
+}
+
+
+
